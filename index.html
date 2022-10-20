@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>quản lý sinh viên</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- MAIN CSS-->
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+  <div class="mainContent container-fluid display-5">
+    <div class="row">
+      <div class="left__content col-2 full-height p-0">
+        <div class="nav__header p-3 pt-4 pb-4">
+          <h2 class="nav__header">Quản lý sinh viên</h2>
+        </div>
+        <ul class="nav flex-column nav__body mt-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="./index.html">
+              <i class="fa fa-home"></i> Trang chủ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-briefcase"></i> Về chúng tôi
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-newspaper"></i> Tin tức
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-paper-plane"></i> Liên hệ
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-10 right__content full-height pt-4">
+        <!--MODAL-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Nhập thông tin Sinh viên
+                </h5>
+              </div>
+              <div class="modal-body">
+                <form class="form-group w-100">
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input id="ten" type="text" class="form-control" placeholder="Tên sinh viên">
+                  </div>
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input id="email" type="text" class="form-control" placeholder="Email">
+                  </div>
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                    </div>
+                    <input id="sdt" type="text" class="form-control" placeholder="Số điện thoại">
+                  </div>
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-calculator"></i></span>
+                    </div>
+                    <input id="toan" type="text" class="form-control" placeholder="Điểm toán">
+                  </div>
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fab fa-autoprefixer"></i></span>
+                    </div>
+                    <input id="ly" type="text" class="form-control" placeholder="Điểm Lý">
+                  </div>
+                  <div class="input-group w-100 mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fab fa-battle-net"></i></span>
+                    </div>
+                    <input id="hoa" type="text" class="form-control" placeholder="Điểm Hóa">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnAddStudent" onclick="themSinhVien()">
+                  Thêm Sinh viên
+                  <button type="button" class="btn btn-primary" id="btnUpdateStudent" onclick="capNhatSinhVien()">
+                    Cập nhật
+                  </button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Đóng
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__table">
+          <div class="card">
+            <div class="card-body row">
+              <div class="col-12">
+                <h3 class="text-primary font-weight-bold">
+                  Danh Sách Sinh Viên
+                </h3>
+              </div>
+              <div class="col-12 text-right mb-4">
+                <button class="btn btn-primary p-2" data-toggle="modal" data-target="#exampleModal">
+                  Thêm sinh viên
+                </button>
+              </div>
+              <div class="search col-12">
+                <nav class="navbar navbar-light bg-light pl-0 pr-0">
+                  <form class="form-inline w-100">
+                    <div class="input-group w-100">
+                      <input style="font-size: 22px" type="text" class="form-control" placeholder="Tên sinh viên "
+                        id="txtSearch" />
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1" style="font-size: 22px"
+                          onclick="laySinhVienTheoTen()">
+                          <i class="fa fa-search display-5"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                </nav>
+              </div>
+              <div class="table__content col-12">
+                <table class="border border-1 w-100 table-striped">
+                  <thead class="text-primary text-center table__header">
+                    <tr>
+                      <th class="border border-1 pt-3 pb-3">Mã Sinh viên</th>
+                      <th class="border border-1 pt-3 pb-3">Họ tên</th>
+                      <th class="border border-1 pt-3 pb-3">Email</th>
+                      <th class="border border-1 pt-3 pb-3">Số điện thoại</th>
+                      <th class="border border-1 pt-3 pb-3">Điểm Toán</th>
+                      <th class="border border-1 pt-3 pb-3">Điểm Lý</th>
+                      <th class="border border-1 pt-3 pb-3">Điểm Hóa</th>
+                      <th class="border border-1 pt-3 pb-3"><i class="fa fa-cog"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody id="table__body"></tbody>
+                  <tfoot id="table__footer"></tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+  <!--Axios-->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!--class Sinh Vien-->
+  <script src="./js/SinhVien.js"></script>
+  <!--validation-->
+  <script src="./js/validation.js"></script>
+  <!--MAIN-->
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
