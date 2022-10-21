@@ -65,7 +65,7 @@ const getListSinhVien = async () => {
 const layDSSVtheoTen = async (ten) => {
   let listSinhVien = [];
   await axios({
-    url: `http://localhost:3000/sinhvien/${ten}`,
+    url: `https://serverqlsv1.herokuapp.com/sinhvien/${ten}`,
     method: "GET",
   })
     .then((res) => {
@@ -81,7 +81,7 @@ const layDSSVtheoTen = async (ten) => {
 // xoa sinh vien
 const xoaSVtheoID = async (id) => {
   const sinhVienXoa = await axios({
-    url: `http://localhost:3000/sinhvien/${id}`,
+    url: `https://serverqlsv1.herokuapp.com/sinhvien/${id}`,
     method: "DELETE",
   })
     .then((res) => {
@@ -94,7 +94,7 @@ const xoaSVtheoID = async (id) => {
 // them sinh vien
 const themSV = async (sinhVien) => {
   const sinhvienthem = await axios
-    .post("http://localhost:3000/sinhvien", {
+    .post("https://serverqlsv1.herokuapp.com/sinhvien", {
       name: sinhVien.name,
       email: sinhVien.email,
       sdt: sinhVien.sdt,
