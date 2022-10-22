@@ -38,7 +38,7 @@ const getListSinhVien = async () => {
   let listSinhVien = [];
   await axios({
     method: "GET",
-    url: "https://serverqlsv1.herokuapp.com/sinhvien",
+    url: "http://localhost:8080/sinhvien",
   })
     .then((res) => {
       listSinhVien = res.data;
